@@ -29,11 +29,11 @@ while (!userIsFinished) {
   // a. Split the newEmployeeData string by commas - we assume the first item will be the
   // employee name, the second their position, the third their salary all separated by commas
   // so split will give us an array that looks like this ["John Wayne", "Sales", "65000"]
-  const employeeDataArray = newEmployeeData.split(",");
+  const namePositionSalaryArray = newEmployeeData.split(",");
 
   // 3. Put the object created in step 2 into our list of employees
   // call the function declared below to create the new employee
-  const newEmployee = createEmployee(employeeDataArray);
+  const newEmployee = createEmployee(namePositionSalaryArray);
   employeeList.push(newEmployee);
   console.log(employeeList);
   // 4. Alert the user that the employee was added successfully
