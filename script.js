@@ -29,17 +29,35 @@ function createEmployeeRows() {
 createEmployeeRows();
 
 const addEmployeeForm = document.querySelector("#add-employee");
+const errorMessage = document.querySelector("#error-msg");
+const successMessage = document.querySelector("#success-msg");
 
 addEmployeeForm.addEventListener("submit", function (e) {
   e.preventDefault();
+  if (!errorMessage.classList.contains("hidden")) {
+    errorMessage.classList.add("hidden");
+  }
+
   const formData = new FormData(addEmployeeForm);
+  const name = formData.get("name");
+  const position = formData.get("position");
+  const salary = +formData.get("salary");
+  if (!name || !position || !salary) {
+    errorMessage.classList.remove("hidden");
+    return;
+  }
   const newEmployee = {
-    name: formData.get("name"),
-    position: formData.get("position"),
-    salary: +formData.get("salary"),
+    name,
+    position,
+    salary,
   };
   employeeList.push(newEmployee);
   createEmployeeRows();
+  successMessage.classList.remove("hidden");
+  addEmployeeForm.requestFullscreen();
+  setTimeout(function () {
+    successMessage.classList.add("hidden");
+  }, 2000);
 });
 
 // global variable that can be updated to stop the loop below
