@@ -11,6 +11,22 @@ const employeeList = [
   { name: "Employee B", position: "Salesperson", salary: 60000 },
 ];
 
+const tableBody = document.querySelector("#employee-table tbody");
+
+function createEmployeeRows() {
+  const employeeRows = employeeList.map((employee) => {
+    const newRow = document.createElement("tr");
+    for (const property in employee) {
+      const newCell = document.createElement("td");
+      newCell.textContent = employee[property];
+      newRow.appendChild(newCell);
+    }
+    return newRow;
+  });
+  tableBody.replaceChildren(...employeeRows);
+}
+
+createEmployeeRows();
 // global variable that can be updated to stop the loop below
 let userIsFinished = false;
 
