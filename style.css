@@ -8,3 +8,7 @@ h2{
   margin: 0 auto;
   border: 1px solid black;
 }
+
+#employee-table tbody td{
+    text-align: center;
+}

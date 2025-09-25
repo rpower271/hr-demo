@@ -27,6 +27,21 @@ function createEmployeeRows() {
 }
 
 createEmployeeRows();
+
+const addEmployeeForm = document.querySelector("#add-employee");
+
+addEmployeeForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const formData = new FormData(addEmployeeForm);
+  const newEmployee = {
+    name: formData.get("name"),
+    position: formData.get("position"),
+    salary: +formData.get("salary"),
+  };
+  employeeList.push(newEmployee);
+  createEmployeeRows();
+});
+
 // global variable that can be updated to stop the loop below
 let userIsFinished = false;
 
